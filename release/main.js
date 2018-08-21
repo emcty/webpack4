@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[0],[function(e,n,t){"use strict";var u=function(e){return e&&e.__esModule?e:{default:e}}(t(1));t(2),document.getElementById("app").innerHTML=u.default},function(e,n,t){"use strict";e.exports="我的名字叫小红"}],[[0,2,1]]]);
