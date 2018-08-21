@@ -11,7 +11,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: '[name].js?[hash:8]', //输出的文件名不会加hash值，但会给html中引入此文件的scrip标签加hash.
-    // chunkFilename: '[id].[contentHash:8].js',
+    // chunkFilename: '[id].[contentHash:8].js', 提取公共模块
     path: path.resolve("./release")
   },
   devServer:{
@@ -73,12 +73,12 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          {loader: Debug ? 'style-loader': MiniCssExtractPlugin.loader}, //开发模式下开启'style-loader'可实现更新
+          {loader: Debug ? 'style-loader': MiniCssExtractPlugin.loader}, //开发模式下开启'style-loader'可实现更新,如果使用MiniCssExtractPlugin，因为是单独提取了css,以link标签导入，所以样式更改后必须要手动F5才能刷新过来，所以MiniCssExtractPlugin在放在生产环境下。
           {
             loader: `css-loader`,
             options: {
               sourceMap: true,
-              minimize: !Debug
+              minimize: !Debug  //生产模式下开启压缩
             }
           },
           {
